@@ -122,11 +122,7 @@ void period_10Hz(uint32_t count)
 {
 	//ESC_CALIB(count);
 	//MotorTest(count);
-	//get_pitch(pitchAngle);
-	//get_roll(rollAngle);
 	BT(BlueToothStartStopFlag,BlueToothStopFlag,BluetoothDirectionFlag,ThrottleIncrease,ThrottleDecrease,restoreValueFlag);
-
-	//get_yaw(yawAngle,yawAngleInitial);
 }
 
 void period_100Hz(uint32_t count)
@@ -156,7 +152,6 @@ void period_100Hz(uint32_t count)
 void period_400Hz(uint32_t count)
 {
 
-	//printf("400Hz\n");
 }
 // 1Khz (1ms) is only run if Periodic Dispatcher was configured to run it at main():
 // scheduler_add_task(new periodicSchedulerTask(run_1Khz = true));

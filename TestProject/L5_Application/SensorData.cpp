@@ -60,7 +60,6 @@ void get_roll(volatile float &rollAngle)
 	else
 		rollAngle = -1 * (float)data/15.89;
 	rollAngle = rollAngle - 0.2;
-	//printf("Roll %0.2f\n",rollAngle);
 }
 
 void get_yaw(volatile float &yawAngle,volatile float &yawAngleInitial)
@@ -78,8 +77,6 @@ void get_yaw(volatile float &yawAngle,volatile float &yawAngleInitial)
 		yawAngle = yawAngle - yawAngleInitial;
 	if(yawAngle > 180)
 		yawAngle = yawAngle - 360;
-	//printf("Yaw %0.2f\n",float(data));
-	//printf("Yaw %0.2f\n",yawAngle);
 }
 
 

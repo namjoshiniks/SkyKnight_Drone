@@ -25,7 +25,6 @@ void setupBT()
 		i++;
 		if(i >= 3)
 		{
-			//printf("BTSETUP");
 			i = 0;
 			break;
 		}
@@ -36,10 +35,8 @@ void setupBT()
 void BT(bool &BlueToothStartStopFlag,bool &BlueToothStopFlag, int &BluetoothDirectionFlag,bool &ThrottleIncrease,bool &ThrottleDecrease,bool& restoreValueFlag)
 {
 	char c;
-	//printf("\nBluetooth Command Received");
 	while(u3->getChar(&c, 100))
 	{
-		//printf("\nBluetooth Command:%c",c);
 		if(c == 'R')
 		{
 			BlueToothStartStopFlag = true;
@@ -48,7 +45,6 @@ void BT(bool &BlueToothStartStopFlag,bool &BlueToothStopFlag, int &BluetoothDire
 		}
 		else if(c == 'S')
 		{
-			//BlueToothStartStopFlag = false;
 			BlueToothStopFlag = true;
 		}
 		else if (c == 'F')
@@ -63,7 +59,6 @@ void BT(bool &BlueToothStartStopFlag,bool &BlueToothStopFlag, int &BluetoothDire
 		else if (c == 'L')
 		{
 			BluetoothDirectionFlag = 5;
-			//printf("L received \n");
 		}
 		else if (c == 'B')
 		{
@@ -72,8 +67,6 @@ void BT(bool &BlueToothStartStopFlag,bool &BlueToothStopFlag, int &BluetoothDire
 		else if (c == 'G' )
 		{
 			BluetoothDirectionFlag = 0;
-			//printf(" G received\n");
-
 		}
 		else if( c == 'D')
 		{

@@ -78,35 +78,13 @@ void PID_Algorithm_Pitch(bool &BlueToothStartStopFlag,bool &BlueToothStopFlag,in
 			D_Pitch = (error_pitch - lasterror_pitch)/0.01;
 
 			float n = P_Pitch * 0.7 + D_Pitch * 0.07 + I_Pitch * 1;
-			//printf("Error_Pitch %0.2f \n",error_pitch);
-			//		printf("LastError_Pitch %0.2f \n",lasterror_pitch);
-			//		printf("D Pitch %0.2f\n",D_Pitch* 0.08);
-			//		printf("P Pitch %0.2f\n",P_Pitch * 2);
-
-			//printf("P n = %0.2f\n",P_Pitch * 0.05);
-			//		printf("Actual n = %0.2f\n",n);
 
 			n = 0.11 * n;
-			//		printf("PWM = %0.2f\n",n);
-
 			lasterror_pitch = error_pitch;
 			FR_DCPWM -= n;
 			FL_DCPWM -= n;
 			BR_DCPWM += n;
 			BL_DCPWM += n;
-
-			//PWM_Limit();
-			//		printf("FR_DCPWM = %0.2f\n", FR_DCPWM);
-			//		printf("FL_DCPWM  = %0.2f\n", FL_DCPWM);
-
-
-			//		printf("FR_DCPWM = %0.2f\n", FR_DCPWM);
-			//		printf("FL_DCPWM  = %0.2f\n", FL_DCPWM);
-			//		printf("BR_DCPWM = %0.2f\n", BR_DCPWM);
-			//		printf("BL_DCPWM  = %0.2f\n", BL_DCPWM);
-			//		printf("Addition  = %0.2f\n", FR_DCPWM + FL_DCPWM + BR_DCPWM + BL_DCPWM);
-
-			//		//PID_Function(BlueToothOrder,FR,FL,BR,BL);
 		}
 		else
 		{
@@ -122,7 +100,6 @@ void PID_Algorithm_Pitch(bool &BlueToothStartStopFlag,bool &BlueToothStopFlag,in
 			BL.set(40);
 			FR_PWM_MAX = baseVal + 10;
 			FR_PWM_MIN = baseVal - 10;
-			//printf("Stop Pitch\n");
 			lasterror_pitch = 0;
 			for(int i = 0; i < 6; i++)
 			{
@@ -153,8 +130,6 @@ void PID_Algorithm_Roll(bool &BlueToothStartStopFlag,bool &BlueToothStopFlag,int
 		{
 
 			error_roll = (set_roll - (rollAngle));
-			//printf("Roll Angle = %0.2f \n",rollAngle);
-
 			P_Roll = error_roll;
 			for(int i = 0 ; i < 5 ; i++)
 			{
@@ -190,7 +165,6 @@ void PID_Algorithm_Roll(bool &BlueToothStartStopFlag,bool &BlueToothStopFlag,int
 		}
 		else
 		{
-			//printf("Stop Roll\n");
 			FR.set(40);
 			FL.set(40);
 			BR.set(40);
@@ -227,8 +201,6 @@ void PID_Algorithm_Yaw(bool &BlueToothStartStopFlag,bool &BlueToothStopFlag,int 
 		if(BlueToothStartStopFlag)
 		{
 			error_yaw = (set_yaw - (yawAngle));
-			//printf("Yaw Angle = %0.2f \n",yawAngle);
-
 			P_Yaw = error_yaw;
 			for(int i = 0 ; i < 5 ; i++)
 			{
@@ -256,10 +228,7 @@ void PID_Algorithm_Yaw(bool &BlueToothStartStopFlag,bool &BlueToothStopFlag,int 
 			FL_DCPWM += n;
 			BR_DCPWM += n;
 			BL_DCPWM -= n;
-			//			printf("FR_DCPWM = %0.2f\n", FR_DCPWM);
-			//			printf("FL_DCPWM  = %0.2f\n", FL_DCPWM);
-			//			printf("BR_DCPWM = %0.2f\n", BR_DCPWM);
-			//			printf("BL_DCPWM  = %0.2f\n", BL_DCPWM);
+
 			FR_DCPWM += 0.6;
 			FL_DCPWM -= 0.6;
 			BR_DCPWM += 0.6;
@@ -273,20 +242,9 @@ void PID_Algorithm_Yaw(bool &BlueToothStartStopFlag,bool &BlueToothStopFlag,int 
 			BL.set(BL_DCPWM);
 
 			LE.on(1);
-			//printf("FR_DCPWM = %0.2f\n", FR_DCPWM);
-			//printf("FL_DCPWM  = %0.2f\n", FL_DCPWM);
-			//printf("BR_DCPWM = %0.2f\n", BR_DCPWM);
-			//printf("BL_DCPWM  = %0.2f\n", BL_DCPWM);
-			//printf("Set Pitch %0.2f \n",set_pitch);
-			//printf("Set Roll %0.2f \n",set_roll);
-
-			//		printf("Addition  = %0.2f\n\n", FR_DCPWM + FL_DCPWM + BR_DCPWM + BL_DCPWM);
-
-			//		//PID_Function(BlueToothOrder,FR,FL,BR,BL);
 		}
 		else
 		{
-			//printf("Stop Yaw\n");
 			FR.set(40);
 			FL.set(40);
 			BR.set(40);
